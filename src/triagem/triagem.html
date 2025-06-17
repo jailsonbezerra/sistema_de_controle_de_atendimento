@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Triagem de Pacientes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="triagem.css">
 </head>
 <body>
-    
+    <div class="container">
+        <h1>
+            <i class="fas fa-notes-medical"></i>
+            Pacientes Aguardando Triagem
+        </h1>
+        
+        <div class="filtros">
+            <div class="filtro-group">
+                <label for="filtro-prioridade">Filtrar por Prioridade:</label>
+                <select id="filtro-prioridade">
+                    <option value="todos">Todos</option>
+                    <option value="alta">Alta</option>
+                    <option value="media">Média</option>
+                    <option value="baixa">Baixa</option>
+                </select>
+            </div>
+            
+            <div class="filtro-group">
+                <label for="filtro-busca">Buscar Paciente:</label>
+                <input type="text" id="filtro-busca" placeholder="Nome ou CPF">
+            </div>
+        </div>
+        
+        <div id="pacientesContainer">
+            <div class="nenhum-paciente">
+                <i class="fas fa-user-clock fa-2x" style="margin-bottom: 10px;"></i>
+                <p>Nenhum paciente aguardando triagem no momento</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="triagem.js"></script>
 </body>
 </html>

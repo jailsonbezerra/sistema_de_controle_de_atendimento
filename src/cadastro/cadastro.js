@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Set current datetime
+    // Configuração inicial
     const now = new Date();
     const timezoneOffset = now.getTimezoneOffset() * 60000;
     const localISOTime = (new Date(now - timezoneOffset)).toISOString().slice(0, 16);
     document.getElementById('dataCadastro').value = localISOTime;
 
-    // CPF Mask
+    // Máscaras de campos
     document.getElementById('cpf').addEventListener('input', function(e) {
         let value = e.target.value.replace(/\D/g, '');
         if (value.length > 3) value = value.replace(/^(\d{3})/, '$1.');
@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
         e.target.value = value.substring(0, 14);
     });
 
-    // Phone Mask
     document.getElementById('telefone').addEventListener('input', function(e) {
         let value = e.target.value.replace(/\D/g, '');
         if (value.length > 0) value = '(' + value.substring(0, 2) + ')' + value.substring(2);
@@ -22,49 +21,42 @@ document.addEventListener('DOMContentLoaded', function() {
         e.target.value = value.substring(0, 15);
     });
 
-    // Form submission
+    // Evento de submit do formulário
     document.getElementById('cadastroForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Validate form
         if (!validateForm()) {
-            showMessage('Por favor, preencha todos os campos corretamente', 'error');
+            showMessage('Por favor, preencha todos os campos obrigatórios corretamente', 'error');
             return;
         }
         
-        // Get form data
-        const formData = new FormData(e.target);
-        const paciente = Object.fromEntries(formData.entries());
-        paciente.id = Date.now().toString();
+        const paciente = {
+            id: Date.now().toString(),
+            ...Object.fromEntries(new FormData(e.target).entries()),
+            triagem: null,  // Inicializa como null para ser preenchido na triagem
+            atendimento: null,  // Inicializa como null para ser preenchido no atendimento
+            status: 'cadastrado'  // Novo campo para controle de fluxo
+        };
         
-        // Save to LocalStorage
         savePatient(paciente);
-        
-        // Show success message
         showMessage('Paciente cadastrado com sucesso!', 'success');
         
-        // Reset form (except datetime)
+        // Reset do formulário mantendo a data/hora atual
         e.target.reset();
         document.getElementById('dataCadastro').value = localISOTime;
         resetPriorityButtons();
     });
 });
 
-// Set priority function
+// Funções auxiliares
 function setPriority(button, priority) {
-    // Remove selected class from all buttons
     document.querySelectorAll('.priority-btn').forEach(btn => {
         btn.classList.remove('selected');
     });
-    
-    // Add selected class to clicked button
     button.classList.add('selected');
-    
-    // Update hidden select value
     document.getElementById('prioridade').value = priority;
 }
 
-// Reset priority buttons
 function resetPriorityButtons() {
     document.querySelectorAll('.priority-btn').forEach(btn => {
         btn.classList.remove('selected');
@@ -72,29 +64,55 @@ function resetPriorityButtons() {
     document.getElementById('prioridade').value = '';
 }
 
-// Form validation
 function validateForm() {
-    const form = document.getElementById('cadastroForm');
-    const requiredFields = form.querySelectorAll('[required]');
+    const requiredFields = document.querySelectorAll('#cadastroForm [required]');
+    let isValid = true;
     
-    for (let field of requiredFields) {
+    requiredFields.forEach(field => {
         if (!field.value.trim()) {
-            field.focus();
-            return false;
+            field.classList.add('error');
+            isValid = false;
+        } else {
+            field.classList.remove('error');
         }
+    });
+    
+    // Validação específica para CPF (apenas tamanho, validação real seria mais complexa)
+    const cpf = document.getElementById('cpf').value.replace(/\D/g, '');
+    if (cpf.length !== 11) {
+        document.getElementById('cpf').classList.add('error');
+        isValid = false;
     }
     
-    return true;
+    return isValid;
 }
 
-// Save patient to LocalStorage
+// Funções de armazenamento (compatíveis com outros módulos)
 function savePatient(patient) {
-    const patients = JSON.parse(localStorage.getItem('patients')) || [];
-    patients.push(patient);
-    localStorage.setItem('patients', JSON.stringify(patients));
+    try {
+        const pacientes = getPatients();
+        pacientes.push(patient);
+        localStorage.setItem('pacientes', JSON.stringify(pacientes));
+        
+        // Debug: Mostra no console o que foi salvo
+        console.log('Paciente salvo:', patient);
+        console.log('Todos os pacientes:', pacientes);
+    } catch (error) {
+        console.error('Erro ao salvar paciente:', error);
+        showMessage('Erro ao salvar os dados do paciente', 'error');
+    }
 }
 
-// Show message
+// Função para obter pacientes (compatível com outros módulos)
+function getPatients() {
+    try {
+        return JSON.parse(localStorage.getItem('pacientes')) || [];
+    } catch (error) {
+        console.error('Erro ao ler pacientes:', error);
+        return [];
+    }
+}
+
 function showMessage(text, type) {
     const messageDiv = document.getElementById('message');
     messageDiv.textContent = text;
