@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triagem de Pacientes</title>
+    <title>Atendimento Médico</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="triagem.css">
+    <link rel="stylesheet" href="atendimento.css">
 </head>
 <body>
     <div class="container">
         <header class="page-header">
             <h1>
-                <i class="fas fa-notes-medical"></i>
-                Pacientes Aguardando Triagem
+                <i class="fas fa-user-md"></i>
+                Lista de Atendimento Médico
                 <span id="contador-pacientes" class="badge">0</span>
             </h1>
             <div class="filtros">
@@ -24,13 +24,10 @@
         </header>
         
         <div id="pacientesContainer" class="pacientes-container">
-            <div class="nenhum-paciente">
-                <i class="fas fa-user-clock fa-2x"></i>
-                <p>Nenhum paciente aguardando triagem no momento</p>
-            </div>
+            <!-- Cards serão inseridos aqui via JavaScript -->
         </div>
     </div>
 
-    <script src="triagem.js"></script>
+    <script src="atendimento.js"></script>
 </body>
 </html>

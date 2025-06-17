@@ -1,0 +1,294 @@
+/* Estilos Gerais */
+:root {
+    --cor-primaria: #2c3e50;
+    --cor-secundaria: #3498db;
+    --cor-texto: #333;
+    --cor-fundo: #f5f7fa;
+    --cor-borda: #e0e0e0;
+    --cor-sucesso: #27ae60;
+    --cor-alerta: #e74c3c;
+    --cor-aviso: #f39c12;
+    --cor-branco: #ffffff;
+    --sombra-box: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --transicao: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--cor-branco);
+    border-radius: 8px;
+    box-shadow: var(--sombra-box);
+}
+
+/* Cabeçalho */
+.page-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--cor-borda);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.page-header h1 {
+    font-size: 24px;
+    color: var(--cor-primaria);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    height: 30px;
+    padding: 0 8px;
+    border-radius: 50%;
+    background-color: var(--cor-secundaria);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.badge.urgente {
+    background-color: var(--cor-alerta);
+}
+
+.badge.moderado {
+    background-color: var(--cor-aviso);
+}
+
+.badge.normal {
+    background-color: var(--cor-sucesso);
+}
+
+/* Filtros */
+.filtros {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filtro-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background-color: #ecf0f1;
+    color: var(--cor-texto);
+    cursor: pointer;
+    font-size: 14px;
+    transition: var(--transicao);
+}
+
+.filtro-btn:hover {
+    background-color: #dfe6e9;
+}
+
+.filtro-btn.active {
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+.filtro-btn.urgente {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.filtro-btn.moderado {
+    background-color: #fff8e1;
+    color: #e65100;
+}
+
+.filtro-btn.normal {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* Container de Pacientes */
+.pacientes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.nenhum-paciente {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    color: #7f8c8d;
+}
+
+.nenhum-paciente i {
+    margin-bottom: 15px;
+    color: #bdc3c7;
+}
+
+/* Card do Paciente */
+.paciente-card {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--cor-branco);
+    box-shadow: var(--sombra-box);
+    transition: var(--transicao);
+    border-left: 4px solid #bdc3c7;
+    position: relative;
+}
+
+.paciente-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.paciente-card.urgente {
+    border-left-color: var(--cor-alerta);
+}
+
+.paciente-card.moderado {
+    border-left-color: var(--cor-aviso);
+}
+
+.paciente-card.normal {
+    border-left-color: var(--cor-sucesso);
+}
+
+.prioridade-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.prioridade-urgente {
+    background-color: var(--cor-alerta);
+}
+
+.prioridade-moderado {
+    background-color: var(--cor-aviso);
+}
+
+.prioridade-normal {
+    background-color: var(--cor-sucesso);
+}
+
+.paciente-header {
+    padding: 20px 20px 0;
+}
+
+.paciente-nome {
+    font-size: 18px;
+    color: var(--cor-primaria);
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.paciente-info {
+    padding: 0 20px;
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.triagem-info {
+    padding: 0 20px;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.triagem-info p {
+    margin-bottom: 5px;
+}
+
+/* Botão de Atendimento */
+.btn-atender {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: var(--transicao);
+    margin-top: 15px;
+}
+
+.btn-atender:hover {
+    background-color: #1a252f;
+}
+
+.btn-atender i {
+    font-size: 14px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .filtros {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    .pacientes-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .paciente-card {
+        width: 100%;
+    }
+}

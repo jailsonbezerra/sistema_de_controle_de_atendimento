@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atendimento Médico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="atendimento-form.css">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>
+                <i class="fas fa-user-md"></i>
+                Atendimento Médico
+            </h1>
+        </header>
+
+        <div class="paciente-info-card">
+            <div class="paciente-header">
+                <h2 id="pacienteNome"></h2>
+                <span id="pacientePrioridade" class="prioridade-tag"></span>
+            </div>
+            <div class="paciente-info">
+                <div class="info-item">
+                    <i class="fas fa-id-card"></i>
+                    <span id="pacienteCpf"></span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-birthday-cake"></i>
+                    <span id="pacienteIdade"></span>
+                </div>
+            </div>
+            <div class="triagem-info">
+                <h3><i class="fas fa-notes-medical"></i> Dados da Triagem</h3>
+                <div class="dados-triagem">
+                    <div><strong>Pressão:</strong> <span id="triagemPressao"></span></div>
+                    <div><strong>Batimentos:</strong> <span id="triagemBatimentos"></span></div>
+                    <div><strong>Temperatura:</strong> <span id="triagemTemperatura"></span></div>
+                    <div><strong>Peso:</strong> <span id="triagemPeso"></span></div>
+                    <div><strong>Altura:</strong> <span id="triagemAltura"></span></div>
+                </div>
+                <div class="observacoes-triagem">
+                    <strong>Observações:</strong>
+                    <p id="triagemObservacoes"></p>
+                </div>
+            </div>
+        </div>
+
+        <form id="formAtendimento">
+            <div class="form-section">
+                <h3><i class="fas fa-diagnoses"></i> Diagnóstico</h3>
+                <div class="form-group">
+                    <label for="cid">CID-10 (Opcional):</label>
+                    <input type="text" id="cid" placeholder="Código CID-10">
+                </div>
+                <div class="form-group">
+                    <label for="diagnostico">Diagnóstico *</label>
+                    <textarea id="diagnostico" rows="3" required placeholder="Descreva o diagnóstico..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3><i class="fas fa-prescription-bottle-alt"></i> Prescrição Médica</h3>
+                <div class="form-group">
+                    <label for="medicamentos">Medicamentos:</label>
+                    <textarea id="medicamentos" rows="4" placeholder="Liste os medicamentos prescritos..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exames">Exames Solicitados:</label>
+                    <textarea id="exames" rows="2" placeholder="Liste os exames solicitados..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3><i class="fas fa-file-medical"></i> Conduta Médica</h3>
+                <div class="form-group">
+                    <label for="conduta">Conduta *</label>
+                    <textarea id="conduta" rows="3" required placeholder="Descreva a conduta médica..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="encaminhamento">Encaminhamento:</label>
+                    <textarea id="encaminhamento" rows="2" placeholder="Especialista/Unidade para encaminhamento..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" id="btnVoltar" class="btn btn-secundario">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+                <button type="submit" class="btn btn-primario">
+                    <i class="fas fa-save"></i> Finalizar Atendimento
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script src="atendimento-form.js"></script>
+</body>
+</html>

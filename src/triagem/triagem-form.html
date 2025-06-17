@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Triagem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="triagem-form.css">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>
+                <i class="fas fa-notes-medical"></i>
+                Formulário de Triagem
+            </h1>
+        </header>
+
+        <div class="paciente-info-card">
+            <div class="paciente-header">
+                <h2 id="pacienteNome"></h2>
+                <span id="pacientePrioridade" class="prioridade-tag"></span>
+            </div>
+            <div class="paciente-info">
+                <div class="info-item">
+                    <i class="fas fa-id-card"></i>
+                    <span id="pacienteCpf"></span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-birthday-cake"></i>
+                    <span id="pacienteIdade"></span>
+                </div>
+            </div>
+        </div>
+
+        <form id="formTriagem">
+            <!-- Novo campo para ajuste de prioridade -->
+            <div class="form-group">
+                <label for="prioridade">Classificação de Prioridade:</label>
+                <select id="prioridade" class="prioridade-select" required>
+                    <option value="urgente">Urgente</option>
+                    <option value="moderado">Moderado</option>
+                    <option value="normal">Normal</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="pressao">Pressão Arterial:</label>
+                <input type="text" id="pressao" placeholder="Ex: 120/80 mmHg" required>
+            </div>
+
+            <div class="form-group">
+                <label for="batimentos">Batimentos Cardíacos:</label>
+                <input type="number" id="batimentos" placeholder="Ex: 75 bpm" required>
+            </div>
+
+            <div class="form-group">
+                <label for="temperatura">Temperatura:</label>
+                <input type="text" id="temperatura" placeholder="Ex: 36.5°C" required>
+            </div>
+
+            <div class="form-group">
+                <label for="peso">Peso:</label>
+                <input type="text" id="peso" placeholder="Ex: 70 kg" required>
+            </div>
+
+            <div class="form-group">
+                <label for="altura">Altura:</label>
+                <input type="text" id="altura" placeholder="Ex: 1.75 m" required>
+            </div>
+
+            <div class="form-group">
+                <label for="observacoes">Observações:</label>
+                <textarea id="observacoes" rows="4" placeholder="Descreva as observações relevantes..."></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" id="btnCancelar" class="btn btn-secundario">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+                <button type="submit" class="btn btn-primario">
+                    <i class="fas fa-save"></i> Salvar Triagem
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script src="triagem-form.js"></script>
+</body>
+</html>
