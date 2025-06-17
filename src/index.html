@@ -2,26 +2,38 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Fluxo de Atendimento</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; }
-    nav button { margin-right: 10px; padding: 10px; }
-    #conteudo { margin-top: 30px; border: 1px solid #ccc; padding: 20px; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fluxo de Atendimento Médico</title>
+  <!-- Incluindo Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="global.css">
 </head>
 <body>
-  <h1>🏥 Fluxo de Atendimento</h1>
+  <h1><i class="fas fa-hospital"></i> Fluxo de Atendimento Médico</h1>
   
   <nav>
-    <button onclick="carregarModulo('CADASTRO')">Cadastro</button>
-    <button onclick="carregarModulo('TRIAGEM')">Triagem</button>
-    <button onclick="carregarModulo('ATENDIMENTO')">Atendimento</button>
+    <button onclick="carregarModulo('CADASTRO')">
+      <i class="fas fa-user-plus"></i> Cadastro
+    </button>
+    <button onclick="carregarModulo('TRIAGEM')">
+      <i class="fas fa-notes-medical"></i> Triagem
+    </button>
+    <button onclick="carregarModulo('ATENDIMENTO')">
+      <i class="fas fa-user-md"></i> Atendimento
+    </button>
   </nav>
 
   <div id="conteudo">
-    <p>Selecione um módulo para começar.</p>
+    <div class="welcome-message">
+      <div class="welcome-icon">
+        <i class="fas fa-heartbeat"></i>
+      </div>
+      <p>Selecione um módulo acima para iniciar o atendimento ao paciente.</p>
+      <p>Sistema de gestão de fluxo hospitalar - Versão 1.0</p>
+    </div>
   </div>
 
+  <!-- Vinculando o arquivo JavaScript -->
   <script src="main.js"></script>
 </body>
 </html>

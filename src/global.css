@@ -1,0 +1,164 @@
+/* Variáveis de cores */
+:root {
+  --primary-blue: #2a5c8d;
+  --primary-dark-blue: #1d456e;
+  --secondary-green: #4caf50;
+  --accent-orange: #ff6b35;
+  --light-bg: #f5f9ff;
+  --white: #ffffff;
+  --text-dark: #333333;
+  --text-medium: #555555;
+  --border-light: #d0e0f0;
+}
+
+/* Estilos base mantendo a simplicidade original */
+body { 
+  font-family: 'Segoe UI', Roboto, Tahoma, Geneva, Verdana, sans-serif; 
+  margin: 2rem; 
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+h1 {
+  color: var(--primary-blue);
+  border-bottom: 2px solid var(--primary-blue);
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Navegação aprimorada */
+nav { 
+  margin: 30px 0;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+nav button { 
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary-blue);
+  color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav button:hover {
+  background-color: var(--primary-dark-blue);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+nav button i {
+  font-size: 1.1rem;
+}
+
+/* Área de conteúdo aprimorada */
+#conteudo { 
+  margin-top: 30px; 
+  border: 1px solid var(--border-light); 
+  padding: 30px; 
+  border-radius: 12px;
+  background-color: var(--white);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  min-height: 400px;
+  transition: all 0.3s ease;
+}
+
+/* Mensagem de boas-vindas */
+.welcome-message {
+  text-align: center;
+  color: var(--text-medium);
+  padding: 30px 20px;
+}
+
+.welcome-icon {
+  font-size: 3.5rem;
+  color: var(--primary-blue);
+  margin-bottom: 25px;
+  animation: gentlePulse 3s infinite;
+}
+
+.welcome-message p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Estilos para os módulos (adicionados ao conteúdo via JS) */
+.module-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--primary-dark-blue);
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.module-title i {
+  font-size: 1.8rem;
+}
+
+.module-list {
+  list-style: none;
+}
+
+.module-list li {
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.module-list li:last-child {
+  border-bottom: none;
+}
+
+.module-list i {
+  color: var(--secondary-green);
+  font-size: 1.2rem;
+  min-width: 28px;
+}
+
+/* Animações sutis */
+@keyframes gentlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  body {
+    margin: 1.5rem;
+  }
+  
+  nav {
+    gap: 12px;
+  }
+  
+  nav button {
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+  
+  #conteudo {
+    padding: 20px;
+  }
+  
+  .welcome-icon {
+    font-size: 3rem;
+  }
+}
