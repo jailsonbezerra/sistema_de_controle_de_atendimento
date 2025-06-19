@@ -1,9 +1,8 @@
+import { getPacientes, addPaciente, getPaciente } from "../../scripts/localStorage.js";
+
 document.addEventListener('DOMContentLoaded', function() {
     // Configuração inicial
-    const now = new Date();
-    const timezoneOffset = now.getTimezoneOffset() * 60000;
-    const localISOTime = (new Date(now - timezoneOffset)).toISOString().slice(0, 16);
-    document.getElementById('dataCadastro').value = localISOTime;
+    dataHoraAtual();
 
     // Máscaras de campos
     document.getElementById('cpf').addEventListener('input', function(e) {
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             status: 'cadastrado'  // Novo campo para controle de fluxo
         };
         
-        savePatient(paciente);
+        addPaciente(paciente);
         showMessage('Paciente cadastrado com sucesso!', 'success');
         
         // Reset do formulário mantendo a data/hora atual
@@ -48,11 +47,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+const btnUrgente = document.querySelector('.urgent');
+const btnModerate = document.querySelector('.moderate');
+const btnNormal = document.querySelector('.normal');
+
+btnUrgente.addEventListener('click', function() {
+    setPriority(btnUrgente, 'urgente');
+});
+
+btnModerate.addEventListener('click', function() {
+    setPriority(btnModerate, 'moderado');
+});
+
+btnNormal.addEventListener('click', function() {
+    setPriority(btnNormal, 'normal');
+});
+
+const btnReset = document.querySelector('.reset-btn');
+
+btnReset.addEventListener('click', function() {
+    dataHoraAtual();
+    resetPriorityButtons();
+
+});
+
 // Funções auxiliares
 function setPriority(button, priority) {
     document.querySelectorAll('.priority-btn').forEach(btn => {
         btn.classList.remove('selected');
     });
+
     button.classList.add('selected');
     document.getElementById('prioridade').value = priority;
 }
@@ -87,32 +111,6 @@ function validateForm() {
     return isValid;
 }
 
-// Funções de armazenamento (compatíveis com outros módulos)
-function savePatient(patient) {
-    try {
-        const pacientes = getPatients();
-        pacientes.push(patient);
-        localStorage.setItem('pacientes', JSON.stringify(pacientes));
-        
-        // Debug: Mostra no console o que foi salvo
-        console.log('Paciente salvo:', patient);
-        console.log('Todos os pacientes:', pacientes);
-    } catch (error) {
-        console.error('Erro ao salvar paciente:', error);
-        showMessage('Erro ao salvar os dados do paciente', 'error');
-    }
-}
-
-// Função para obter pacientes (compatível com outros módulos)
-function getPatients() {
-    try {
-        return JSON.parse(localStorage.getItem('pacientes')) || [];
-    } catch (error) {
-        console.error('Erro ao ler pacientes:', error);
-        return [];
-    }
-}
-
 function showMessage(text, type) {
     const messageDiv = document.getElementById('message');
     messageDiv.textContent = text;
@@ -122,4 +120,11 @@ function showMessage(text, type) {
         messageDiv.textContent = '';
         messageDiv.className = 'message';
     }, 5000);
+}
+
+function dataHoraAtual() {
+    const now = new Date();
+    const timezoneOffset = now.getTimezoneOffset() * 60000;
+    const localISOTime = (new Date(now - timezoneOffset)).toISOString().slice(0, 16);
+    document.getElementById('dataCadastro').textContent = localISOTime;
 }

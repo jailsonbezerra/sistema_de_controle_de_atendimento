@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Triagem de Pacientes</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="triagem.css">
+    </head>
+
+    <body>
+  
+        <main class="container">
+            <h1>
+                <i class="fas fa-notes-medical"></i>
+                Pacientes Aguardando Triagem
+                <span id="contador-pacientes" class="badge">0</span>
+            </h1>
+    
+            <span class="filtros">
+                <button id="btn-todos" class="filtro-btn active" data-prioridade="">Todos</button>
+                <button id="btn-urgente" class="filtro-btn urgente" data-prioridade="urgente">Urgente</button>
+                <button id="btn-moderado" class="filtro-btn moderado" data-prioridade="moderado">Moderado</button>
+                <button id="btn-normal" class="filtro-btn normal" data-prioridade="normal">Normal</button>
+            </span>
+            <section id="pacientesContainer" class="pacientes-container">
+                <div class="nenhum-paciente">
+                    <i class="fas fa-user-clock fa-2x"></i>
+                    <p>Nenhum paciente aguardando triagem no momento</p>
+                </div>
+            </section>
+        </main>
+
+        <script type="module" src="triagem.js"></script>
+    </body>
+</html>

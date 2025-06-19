@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Fluxo de Atendimento Médico</title>
+    <!-- Incluindo Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="global.css">
+  </head>
+
+  <body>
+    <header>
+      <h1><i class="fas fa-hospital"></i> Fluxo de Atendimento Médico</h1>
+
+      <nav>
+        <button class="btn-cadastro">
+          <i class="fas fa-user-plus"></i> Cadastro
+        </button>
+
+        <button class="btn-triagem">
+          <i class="fas fa-notes-medical"></i> Triagem
+        </button>
+
+        <button class="btn-atendimento">
+          <i class="fas fa-user-md"></i> Atendimento
+        </button>
+      </nav>
+    </header>
+
+    <main id="conteudo">
+      <section class="welcome-message">
+        <span class="welcome-icon fas fa-heartbeat">
+        </span>
+        <p>Selecione um módulo acima para iniciar o atendimento ao paciente.</p>
+        <p>Sistema de gestão de fluxo hospitalar - Versão 1.0</p>
+      </section>
+    </main>
+
+    <!-- Vinculando o arquivo JavaScript -->
+    <script type="module" src="/src/scripts/main.js"></script>
+  </body>
+</html>
